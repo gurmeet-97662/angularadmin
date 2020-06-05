@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private nav: Router
+  ) { }
 
   ngOnInit(): void {
   }
-
+  logOut(){
+    localStorage.removeItem('auth');
+    this.nav.navigate(['/login'])
+  }
+  home(){
+    this.nav.navigate(['/dashboard'])
+  }
+  contact(){
+    this.nav.navigate(['/contacts'])
+  }
 }
